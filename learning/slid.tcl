@@ -7,8 +7,8 @@ set ns [new Simulator]
 
 $ns color 1 red
 
-#$ns trace-all [open B4-sliding-window-loss.tr w]
-#$ns namtrace-all [open B4-sliding-window-loss.nam w]
+$ns trace-all [open slid.tr w]
+$ns namtrace-all [open slid.nam w]
 
 
         foreach i "s1 s2 r1 r2 s3 s4" {
@@ -82,7 +82,7 @@ proc finish {} {
 #	puts "filtering..."
 #	exec tclsh ../bin/namfilter.tcl B4-sliding-window-loss.nam
 	puts "running nam..."
-	exec nam B4-sliding-window-loss.nam &
+	exec nam slid.nam &
 	exit 0
 }
 
