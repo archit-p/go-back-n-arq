@@ -13,9 +13,9 @@ $n1 color blue
 
 
 
-set nf [open A3-sliding-window.nam w]
+set nf [open Go-Back-N.nam w]
 $ns namtrace-all $nf
-#set f [open A3-sliding-window.tr w]
+#set f [open Go-Back-N.tr w]
 #$ns trace-all $f
 
 $ns duplex-link $n0 $n1 0.2Mb 200ms DropTail
@@ -43,12 +43,6 @@ $ns connect $tcp $sink
 
 set ftp [new Application/FTP]
 $ftp attach-agent $tcp
-
-
-
-$ns add-agent-trace $tcp tcp
-$ns monitor-agent-trace $tcp
-$tcp tracevar cwnd_
 
 $ns at 0.1 "$ftp start"
 $ns at 0.68 "$ftp stop"
@@ -115,9 +109,9 @@ proc finish {} {
         $ns flush-trace
 
 #       puts "filtering..."
-#       exec tclsh ../bin/namfilter.tcl A3-sliding-window.nam
+#       exec tclsh ../bin/namfilter.tcl Go-Back-N.nam
        puts "running nam..."
-       exec nam A3-sliding-window.nam &
+       exec nam Go-Back-N.nam &
 
         exit 0
 }
