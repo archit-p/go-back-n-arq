@@ -32,5 +32,13 @@ This project aims to simulate the working of the Go Back N protocol in real worl
 
 ## File Structure
 
-* Introduction.md - Explains theoretical aspects of the mini project
-* Design.md - Explains design aspects of the mini project
+* INTRODUCTION.md - Explains theoretical aspects of the mini project
+* DESIGN.md - Explains design aspects of the mini project
+* src - folder containing source file for our project
+* src/Go-Back-N.tcl - go back n implementation in tcl for ns2
+* learning - folder containing tcl scripts from learning phase
+* img - folder containing screenshots for NAM scripts
+
+## Screenshots
+
+![Image showing transmission of packets](img/packet.png)
