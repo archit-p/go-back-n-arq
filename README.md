@@ -38,3 +38,7 @@ This project aims to simulate the working of the Go Back N protocol in real worl
 * src/Go-Back-N.tcl - go back n implementation in tcl for ns2
 * learning - folder containing tcl scripts from learning phase
 * img - folder containing screenshots for NAM scripts
+
+## Screenshots
+
+![Image showing transmission of packets](img/packet.png)
