@@ -42,3 +42,9 @@ This project aims to simulate the working of the Go Back N protocol in real worl
 ## Screenshots
 
 ![Image showing transmission of packets](img/packet.png)
+
+## Current Progress
+* Learnt basics of TCL.
+* Learnt how to create basic topologies in NS2.
+* Learnt how to implement a simple Stop-And-Wait protocol in NS2.
+* Implemented a simple Go-Back-N protocol simulation.
