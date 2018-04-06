@@ -16,3 +16,10 @@ while flag==0
     flag2=1;
   end
   s = randi(10,1,1);
+  if s>3
+    fprintf('PAK of Frame %d Received\n',a(pt-w));
+    fprintf('Frame %d Transmitted\n',a(pt));
+    if a(pt)==n
+      flag=1;
+    end
+    pt=pt+1;
