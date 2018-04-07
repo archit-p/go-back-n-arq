@@ -53,3 +53,5 @@ Switched to Matlab-
 * Learnt how to create basic topologies in NS2.
 * Learnt how to implement a simple Stop-And-Wait protocol in NS2.
 * Implemented a simple Go-Back-N protocol simulation.
+* Switched to Matlab
+* Implemented go back n protocol in matlab
