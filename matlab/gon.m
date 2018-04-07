@@ -26,8 +26,9 @@ while flag==0
     flag2=1;
   end
   s = randi(10,1,1);
-  if s>3
+  if s>2
     fprintf('PAK of Frame %d Received\n',a(pt-w));
+    label =strcat('PAK of Frame ',num2str(a(pt-w)) ,' Received');
     sentpackets = sentpackets+1;
     gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     fprintf('Frame %d Transmitted\n',a(pt));
@@ -41,7 +42,7 @@ while flag==0
     pt=pt+1;
   else
     fprintf('NAK Of Frame %d Received\n',a(pt-w));
-    for j=0:w-1
+    for j=w-1:-1:0
       fprintf('Frame %d Discarded\n',a(pt-w+j));
       label =strcat('Frame ',num2str(a(pt-w+j)) ,' Discarded');
       windowpackets=windowpackets-1;
@@ -56,7 +57,7 @@ end
 i=n-w+1;
 while (i<=n)
   s = randi(10,1,1);
-  if s>4
+  if s>3
     fprintf('PAK of Frame %d Received\n',a(i));
     label =strcat('PAK of Frame ',num2str(a(i)) ,' Received');
     sentpackets = sentpackets+1;
@@ -71,7 +72,7 @@ while (i<=n)
       unsentpackets=unsentpackets+1;
       gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     end
-    for k=i:n
+    for k=i:-1:n
       fprintf('Frame %d Transmitted\n',a(k));
       label =strcat('Frame ',num2str(a(k)) ,' Transmitted');
       windowpackets = windowpackets+1;
