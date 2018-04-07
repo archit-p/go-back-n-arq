@@ -2,6 +2,12 @@ clc;
 clear all;
 n=input('Number Of Frames: ');
 w=input('Window Size: ');
+while w>n
+  w=input('Invalid window size - cannot be bigger than number of frames.\nRe-enter window size: ')
+end
+sentpackets=0;
+windowpackets=0;
+unsentpackets=n;
 pt=1;
 flag=0;
 flag2=0;
@@ -11,6 +17,10 @@ while flag==0
     %Transmitting The Frames In A Window
     for i=1:w
       fprintf('Frame %d Transmitted\n',a(pt));
+      label =strcat('Frame ',num2str(a(pt)) ,' Transmitted');
+      windowpackets = windowpackets+1;
+      unsentpackets = unsentpackets-1;
+      gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
       pt=pt+1;
     end
     flag2=1;
@@ -18,7 +28,13 @@ while flag==0
   s = randi(10,1,1);
   if s>3
     fprintf('PAK of Frame %d Received\n',a(pt-w));
+    sentpackets = sentpackets+1;
+    gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     fprintf('Frame %d Transmitted\n',a(pt));
+    label =strcat('Frame ',num2str(a(pt)) ,' Transmitted');
+    windowpackets = windowpackets+1;
+    unsentpackets = unsentpackets-1;
+    gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     if a(pt)==n
       flag=1;
     end
@@ -27,6 +43,10 @@ while flag==0
     fprintf('NAK Of Frame %d Received\n',a(pt-w));
     for j=0:w-1
       fprintf('Frame %d Discarded\n',a(pt-w+j));
+      label =strcat('Frame ',num2str(a(pt-w+j)) ,' Discarded');
+      windowpackets=windowpackets-1;
+      unsentpackets=unsentpackets+1;
+      gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     end
     pt=pt-w;
     flag2=0;
@@ -38,14 +58,25 @@ while (i<=n)
   s = randi(10,1,1);
   if s>4
     fprintf('PAK of Frame %d Received\n',a(i));
+    label =strcat('PAK of Frame ',num2str(a(i)) ,' Received');
+    sentpackets = sentpackets+1;
+    gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     i=i+1;
   else
     fprintf('NAK of Frame %d Received \n',a(i));
-    for j=i:n
+    for j=n:i
       fprintf('Frame %d Discarded\n',a(j));
+      label =strcat('Frame ',num2str(a(j)) ,' Discarded');
+      windowpackets=windowpackets-1;
+      unsentpackets=unsentpackets+1;
+      gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     end
     for k=i:n
       fprintf('Frame %d Transmitted\n',a(k));
+      label =strcat('Frame ',num2str(a(k)) ,' Transmitted');
+      windowpackets = windowpackets+1;
+      unsentpackets = unsentpackets-1;
+      gonbar(sentpackets,windowpackets-sentpackets,unsentpackets,label)
     end
   end
 end
