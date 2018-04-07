@@ -22,7 +22,11 @@ However this formula does not take into account the fact that burst errors are t
 This project aims to simulate the working of the Go Back N protocol in real world conditions and aim to generate a more accurate formula for throughput efficiency.  
 
 **Objectives:**  
-* Implementing the go back n arq protocol using ns2.
+* Progress - Implementing the go back n arq protocol using ns2.
+* Date - 01/04/2018-  
+Realized that ns2 not perfect language for implementation  
+Switched to Matlab-
+* Progress - Implementing protocol using matlab
 * Simulate realistic transmission errors
 * Improve upon current throughput formula
 
@@ -34,14 +38,15 @@ This project aims to simulate the working of the Go Back N protocol in real worl
 
 * INTRODUCTION.md - Explains theoretical aspects of the mini project
 * DESIGN.md - Explains design aspects of the mini project
-* src - folder containing source file for our project
-* src/Go-Back-N.tcl - go back n implementation in tcl for ns2
-* learning - folder containing tcl scripts from learning phase
-* img - folder containing screenshots for NAM scripts
+* matlab/src - folder containing source file for our project
+* matlab/img - folder containg screenshots of matlab implementations
+* ns2/src- go back n implementation in tcl for ns2
+* ns2/learning - folder containing tcl scripts from learning phase
+* ns2/img - folder containing screenshots for NAM scripts
 
 ## Screenshots
 
-![Image showing transmission of packets](img/packet.png)
+![Image showing transmission of packets](matlab/img/pic3.jpg)
 
 ## Current Progress
 * Learnt basics of TCL.
