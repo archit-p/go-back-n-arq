@@ -1,3 +1,4 @@
+## Data Communications (CO250): Mini-Project
 
 **Title:**  
 More accurate throughput efficiency for the Go Back-N ARQ protocol  
