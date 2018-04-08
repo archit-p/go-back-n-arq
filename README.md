@@ -22,10 +22,10 @@ However this formula does not take into account the fact that burst errors are t
 This project aims to simulate the working of the Go Back N protocol in real world conditions and aim to generate a more accurate formula for throughput efficiency.  
 
 **Objectives:**  
-* Progress - Implementing the go back n arq protocol using ns2.
+* Progress - Implementing the go back n arq protocol using ns2  
 * Date - 01/04/2018-  
 Realized that ns2 not perfect language for implementation  
-Switched to Matlab-
+Switched to Matlab for further progress-
 * Progress - Implementing protocol using matlab
 * Simulate realistic transmission errors
 * Improve upon current throughput formula
@@ -53,3 +53,5 @@ Switched to Matlab-
 * Learnt how to create basic topologies in NS2.
 * Learnt how to implement a simple Stop-And-Wait protocol in NS2.
 * Implemented a simple Go-Back-N protocol simulation.
+* Changed to Matlab implementation.  
+* Completion of protocol and its visualisation in Matlab.  

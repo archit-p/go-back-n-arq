@@ -8,8 +8,8 @@ w=input('Window Size: ');
 
 
 %To ensure no errors
-while w>n
-  w=input('Invalid window size - cannot be bigger than number of frames.\nRe-enter window size: ')
+while w>=n
+  w=input('Invalid window size - cannot be bigger than or equal to number of frames.\nRe-enter window size: ')
 end
 
 %Setting various variables
@@ -33,7 +33,7 @@ while flag==0
 
     %Transmitting The Frames In A Window
     for i=1:w
-    %transmitting all frames in the window
+  
       fprintf('Frame %d Transmitted\n',a(pt));
       label =strcat('Frame ',num2str(a(pt)) ,' Transmitted');
       unsentframes = unsentframes-1;
