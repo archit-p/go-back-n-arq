@@ -1,5 +1,4 @@
 
-<<<<<<< HEAD
 **Title:**  
 More accurate throughput efficiency for the Go Back-N ARQ protocol  
 
@@ -53,12 +52,5 @@ Switched to Matlab for further progress-
 * Learnt how to create basic topologies in NS2.
 * Learnt how to implement a simple Stop-And-Wait protocol in NS2.
 * Implemented a simple Go-Back-N protocol simulation.
-<<<<<<< HEAD
 * Changed to Matlab implementation.  
 * Completion of protocol and its visualisation in Matlab.  
-=======
-* Switched to Matlab
-* Implemented go back n protocol in matlab
->>>>>>> 8a59e69be87c6c82483ae0c981468d45b1ac1f26
-=======
->>>>>>> 76a8e218f97afd52d3ee7470ae4242d56dcdaee1
