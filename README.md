@@ -46,12 +46,13 @@ Switched to Matlab for further progress-
 
 ## Screenshots
 
-![Image showing transmission of packets](matlab/img/pic3.jpg)
+![Image showing matlab implementation](matlab/img/1.png)
+
+![Image showing matlab gaph](matlab/img/2.png)
 
 ## Current Progress
-* Learnt basics of TCL.
-* Learnt how to create basic topologies in NS2.
 * Learnt how to implement a simple Stop-And-Wait protocol in NS2.
 * Implemented a simple Go-Back-N protocol simulation.
 * Changed to Matlab implementation.  
-* Completion of protocol and its visualisation in Matlab.  
+* Completion of protocol and its visualisation in Matlab.
+
