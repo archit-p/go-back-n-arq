@@ -6,9 +6,11 @@ prev = "False";
 while(numreq > 1)
   guess = randi([lower, upper], 1)
   if(guess > threshold)
-    lower += 1;
+    lower += 10;
   else
-    lower -= 2;
+    lower -= 20;
   end
+  if(lower < 0)
+    lower = 0;
   numreq -= 1;
 end
