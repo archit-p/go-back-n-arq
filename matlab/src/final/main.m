@@ -19,14 +19,20 @@ unsentframes=n;
 pt=1;
 flag=0;
 flag2=0;
+
 %store number of packet drops in one variable
 dropcount = 0;
+
+
 %variables to store threshold, previous and second previous noise values
 threshold = 28;
 noiseHist = [];
+
 %Setting queue
 a=1:n;
 count = 0;
+
+
 %Starting protocol
 while flag==0
   if flag2==0
@@ -46,7 +52,7 @@ while flag==0
   %Setting the noise in the station
   noise = markov(threshold, noiseHist);
   noiseHist = [noiseHist noise];
-  count += 1;
+  count = count + 1;
   %Event of frame acknowledged
   if noise>threshold
     fprintf('Ackowledgement of Frame %d Received\n',a(pt-w));
@@ -60,7 +66,7 @@ while flag==0
 
     windowframes = windowframes+1;
     unsentframes = unsentframes-1;
-    
+
     if pt==n + 1 || a(pt) == n
       flag=1;
     end
@@ -68,9 +74,9 @@ while flag==0
 
   %No acknowledgement
     else
-      dropcount += 1
+      dropcount = dropcount + 1
       fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
-      
+
     %Discarding waiting frames
     for j=w-1:-1:1
       fprintf('Frame %d Discarded\n',a(pt-w+j));
@@ -92,8 +98,8 @@ while (i<=n)
   %Setting the noise in the station
   noise = markov(threshold, noiseHist);
   % update the second prev noise  = prevnoise and prevnoise = noise
-  noiseHist = [noiseHist noise];
-  count += 1;
+  noiseHist = [noiseHist noise]
+  count = count + 1;
   %Acknowledgement of frames
   if noise>threshold
     fprintf('Acknowledgement of Frame %d Received\n',a(i));
@@ -102,7 +108,7 @@ while (i<=n)
 
   %Non Acknowledgement of frames
   else
-    dropcount += 1
+    dropcount = dropcount + 1
     fprintf('No Acknowledgement of Frame %d Received\n',a(i));
     for j=n:-1:i+1
       fprintf('Frame %d Discarded\n',a(j));

@@ -5,4 +5,3 @@ function n= testefficiency(p,m)
 for j=1:m
   n= efficiency(p,j)
 end
-endfunction
