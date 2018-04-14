@@ -1,4 +1,4 @@
-function result = markov(prevone, prevtwo)
+function result = markov(noiseHist)
   # functin to return markov probability function
   # prevone is the last value
   # prevtwo is the second last value
@@ -8,18 +8,17 @@ function result = markov(prevone, prevtwo)
   lower = 0;          
   upper = 100;
   threshold = 0.28 * upper;
- 
-  # check if both thr previous guesses have been above threshold
-  if(prevone < threshold && prevtwo < threshold)
-    upper -= 10;
-  elseif(prevone < threshold)
-    upper -= 5;
+  count = 0;
+  prevNoise = length(noiseHist);
+  while(prevNoise > 0 && noiseHist(prevNoise) <= threshold)
+    count += 1;
+    prevNoise = prevNoise - 1;
   end
-  if(upper < 0)
-    upper = 0;
+  count
+  val = 1;
+  while(count > 0)
+    count -= 1;
+    val = val * 1.02;
   end
-  if(upper > 99)
-    upper = 99;
-  end
-  result = randi([lower, upper], 1);
+  val
 endfunction
