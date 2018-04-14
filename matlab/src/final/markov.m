@@ -33,5 +33,4 @@ function result = markov(threshold, noiseHist)
   end
 
   %return the prediction
-  n = input('k');
-  result = pred
+  result = pred;
