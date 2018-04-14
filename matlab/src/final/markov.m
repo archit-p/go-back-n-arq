@@ -10,17 +10,16 @@ function result = markov(prevone, prevtwo)
   threshold = 0.28 * upper;
  
   # check if both thr previous guesses have been above threshold
-  if(prevone > threshold && prevtwo > threshold)
-    lower += 10;
-  elseif(prevone > threshold)
-    lower += 5;
-  elseif(prevone < threshold && prevtwo < threshold)
-    lower -= 10;
+  if(prevone < threshold && prevtwo < threshold)
+    upper -= 10;
   elseif(prevone < threshold)
-    lower -= 5;
+    upper -= 5;
   end
-  if(lower < 0)
-    lower = 0;
+  if(upper < 0)
+    upper = 0;
+  end
+  if(upper > 99)
+    upper = 99;
   end
   result = randi([lower, upper], 1);
 endfunction
