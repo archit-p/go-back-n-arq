@@ -33,7 +33,7 @@ while flag==0
 
     %Transmitting The Frames In A Window
     for i=1:w
-  
+
       fprintf('Frame %d Transmitted\n',a(pt));
       label =strcat('Frame ',num2str(a(pt)) ,' Transmitted');
       unsentframes = unsentframes-1;
@@ -77,8 +77,16 @@ while flag==0
 
   %No acknowledgement
   else
-    fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
-    label =strcat('No Acknowledgement of Frame ',num2str(a(pt-w)) ,' Received');
+    err = randi(10,1,1);
+
+    %If corrupted frame received
+    if err > 5
+      fprintf('Corrupted Frame %d Received\n',a(pt-w));
+      label =strcat('Corrupted Frame ',num2str(a(pt-w)) ,' Received');
+    else
+      fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
+      label =strcat('No Acknowledgement of Frame ',num2str(a(pt-w)) ,' Received');
+    end
     graphbar(sentframes,windowframes-sentframes,unsentframes,label)
 
     %Discarding waiting frames
@@ -116,8 +124,17 @@ while (i<=n)
 
   %Non Acknowledgement of frames
   else
-    fprintf('No Acknowledgement of Frame %d Received\n',a(i));
-    label =strcat('No Acknowledgement of Frame ',num2str(a(i)) ,' Received');
+    err = randi(10,1,1);
+
+    %If corrupted frame received
+    if err > 5
+      fprintf('Corrupted Frame %d Received\n',a(i));
+      label =strcat('Corrupted Frame ',num2str(a(i)) ,' Received');
+    else
+      fprintf('No Acknowledgement of Frame %d Received\n',a(i));
+      label =strcat('No Acknowledgement of Frame ',num2str(a(i)) ,' Received');
+    end
+
     graphbar(sentframes,windowframes-sentframes,unsentframes,label)
     for j=n:-1:i+1
       fprintf('Frame %d Discarded\n',a(j));
