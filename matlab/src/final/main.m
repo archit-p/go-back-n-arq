@@ -43,7 +43,7 @@ p = 1 - threshold/100;
 
 %RTT in terms of block delay
 j = 2 * w;
-efficiency(p,j);
+oldef = efficiency(p,j);
 
 pause(1);
 %Starting protocol
@@ -171,4 +171,8 @@ fprintf('Using Markov Transmission error conditions the efficiency is found to b
 p = 1- (dropcount/(n+dropcount));
 
 j = 2 * w;
-efficiency(p,j);
+newef = efficiency(p,j);
+
+fprintf('Percentage difference is\n');
+
+abs((newef-oldef)* 100/oldef)
