@@ -12,6 +12,10 @@ while w>=n
   w=input('Invalid window size - cannot be bigger than or equal to number of frames.\nRe-enter window size: ')
 end
 
+
+fprintf('According to conventional formula\nThroughput efficiency is\n');
+
+
 %Setting various variables
 sentframes=0;
 windowframes=0;
@@ -23,7 +27,6 @@ flag2=0;
 %store number of packet drops in one variable
 dropcount = 0;
 
-
 %variables to store threshold, previous and second previous noise values
 threshold = 28;
 noiseHist = [];
@@ -33,6 +36,16 @@ a=1:n;
 count = 0;
 
 
+
+
+%Probability of packet being transmitted
+p = 1 - threshold/100;
+
+%RTT in terms of block delay
+j = 2 * w;
+efficiency(p,j);
+
+pause(1);
 %Starting protocol
 while flag==0
   if flag2==0
@@ -43,7 +56,7 @@ while flag==0
       windowframes = windowframes+1;
       pt=pt+1;
     end
-    pause(5.0);
+    pause(2.0);
     %Signalling the end of the window
     flag2=1;
   end
@@ -54,7 +67,7 @@ while flag==0
   noiseHist = [noiseHist noise];
   count = count + 1;
   %Event of frame acknowledged
-  pause(5.0);
+  pause(2.0);
   if noise>threshold
     fprintf('Ackowledgement of Frame %d Received\n',a(pt-w));
     sentframes = sentframes+1;
@@ -84,7 +97,7 @@ while flag==0
         fprintf('Corrupted Frame %d Received\n',a(pt-w));
       else
         %Timeout time
-        pause(2.0);
+        pause(1.0);
         fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
       end
 
@@ -112,7 +125,7 @@ while (i<=n)
   count = count + 1;
   %Acknowledgement of frames
 
-  pause(5.0);
+  pause(2.0);
   if noise>threshold
     fprintf('Acknowledgement of Frame %d Received\n',a(i));
     sentframes = sentframes+1;
@@ -130,7 +143,7 @@ while (i<=n)
     else
       % Timeout
       pause(1.0);
-      label =strcat('No Acknowledgement of Frame ',num2str(a(i)) ,' Received');
+      fprintf('No Acknowledgement of Frame %d Received\n',a(i));
     end
 
 
@@ -142,7 +155,7 @@ while (i<=n)
       unsentframes=unsentframes+1;
     end
     %Retransmitting frames
-    pause(5.0);
+    pause(2.0);
       for k=i:n
         fprintf('Frame %d Transmitted\n',a(k));
         windowframes = windowframes+1;
@@ -152,3 +165,10 @@ while (i<=n)
 end
 
 dropcount
+
+fprintf('Using Markov Transmission error conditions the efficiency is found to be\n');
+
+p = 1- (dropcount/(n+dropcount));
+
+j = 2 * w;
+efficiency(p,j);
