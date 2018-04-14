@@ -43,7 +43,7 @@ while flag==0
       windowframes = windowframes+1;
       pt=pt+1;
     end
-
+    pause(5.0);
     %Signalling the end of the window
     flag2=1;
   end
@@ -54,6 +54,7 @@ while flag==0
   noiseHist = [noiseHist noise];
   count = count + 1;
   %Event of frame acknowledged
+  pause(5.0);
   if noise>threshold
     fprintf('Ackowledgement of Frame %d Received\n',a(pt-w));
     sentframes = sentframes+1;
@@ -74,8 +75,18 @@ while flag==0
 
   %No acknowledgement
     else
-      dropcount = dropcount + 1
-      fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
+      dropcount = dropcount + 1;
+
+      err = randi(10,1,1);
+
+      %If corrupted frame received
+      if err > 5
+        fprintf('Corrupted Frame %d Received\n',a(pt-w));
+      else
+        %Timeout time
+        pause(2.0);
+        fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
+      end
 
     %Discarding waiting frames
     for j=w-1:-1:1
@@ -90,7 +101,6 @@ while flag==0
   end
 end
 
-
 %Last 'W' Frames are dealt seperately
 i=n-w+1;
 
@@ -98,9 +108,11 @@ while (i<=n)
   %Setting the noise in the station
   noise = markov(threshold, noiseHist);
   % update the second prev noise  = prevnoise and prevnoise = noise
-  noiseHist = [noiseHist noise]
+  noiseHist = [noiseHist noise];
   count = count + 1;
   %Acknowledgement of frames
+
+  pause(5.0);
   if noise>threshold
     fprintf('Acknowledgement of Frame %d Received\n',a(i));
     sentframes = sentframes+1;
@@ -108,8 +120,20 @@ while (i<=n)
 
   %Non Acknowledgement of frames
   else
-    dropcount = dropcount + 1
-    fprintf('No Acknowledgement of Frame %d Received\n',a(i));
+    dropcount = dropcount + 1;
+
+    err = randi(10,1,1);
+
+    %If corrupted frame received
+    if err > 5
+      fprintf('Corrupted Frame %d Received\n',a(i));
+    else
+      % Timeout
+      pause(1.0);
+      label =strcat('No Acknowledgement of Frame ',num2str(a(i)) ,' Received');
+    end
+
+
     for j=n:-1:i+1
       fprintf('Frame %d Discarded\n',a(j));
       windowframes=windowframes-1;
@@ -118,6 +142,7 @@ while (i<=n)
       unsentframes=unsentframes+1;
     end
     %Retransmitting frames
+    pause(5.0);
       for k=i:n
         fprintf('Frame %d Transmitted\n',a(k));
         windowframes = windowframes+1;
