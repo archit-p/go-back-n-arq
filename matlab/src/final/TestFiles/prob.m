@@ -1,4 +1,4 @@
-function result = markov(prev)
+function result = prob(prev)
   lower = 0;
   numreq = 100;
   upper = numreq * 10;
