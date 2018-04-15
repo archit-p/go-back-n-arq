@@ -183,4 +183,3 @@ newef = efficiency(p,j);
 fprintf('Percentage difference is\n');
 
 abs((newef-oldef)* 100/oldef)
-n=input("njkdkn")
