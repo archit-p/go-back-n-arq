@@ -58,5 +58,5 @@ Switched to Matlab for further progress-
 We've simulated a simple markov channel for testing purpose in Matlab. The probability that the next packet transmitted has an error depends on how many of the previous packets had an error.
 
 ### Testing the model
-![Testing script outputs][matlab/img/markov.png]
+![Testing script outputs](matlab/img/markov.png)
 The probability that the next packet has an error is 28% when no previous packet had an error. With each packet with an error, the next packet's probability of having an error goes up by 5%.
