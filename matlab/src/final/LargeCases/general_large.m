@@ -33,7 +33,7 @@ p = 1 - threshold/100;
 j = 2 * w;
 
 oldef = efficiency(p,j);
-pause(1.0);
+%pause(1.0);
 
 
 
@@ -50,7 +50,7 @@ while flag==0
       windowframes = windowframes+1;
       pt=pt+1;
     end
-    pause(2.0);
+    %pause(2.0);
 
     %Signalling the end of the window
     flag2=1;
@@ -61,7 +61,7 @@ while flag==0
   noise = randi(100,1,1);
 
   %Event of frame acknowledged
-  pause(2.0);
+  %pause(2.0);
   if noise>threshold
     %fprintf('Ackowledgement of Frame %d Received\n',a(pt-w));
     sentframes = sentframes+1;
@@ -90,7 +90,7 @@ while flag==0
     if err > 5
       %fprintf('Corrupted Frame %d Received\n',a(pt-w));
     else
-      pause(1.0);
+      %pause(1.0);
       %fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
     end
 
@@ -119,7 +119,7 @@ while (i<=n)
   %Setting the noise in the station
   noise = randi(100,1,1);
 
-  pause(2.0);
+  %pause(2.0);
   %Acknowledgement of frames
   if noise>threshold
     %fprintf('Acknowledgement of Frame %d Received\n',a(i));
@@ -136,7 +136,7 @@ while (i<=n)
     if err > 5
       %fprintf('Corrupted Frame %d Received\n',a(i));
     else
-      pause(1.0);
+      %pause(1.0);
       %fprintf('No Acknowledgement of Frame %d Received\n',a(i));
     end
 
@@ -151,7 +151,7 @@ while (i<=n)
     unsentframes=unsentframes+1;
 
     %Retransmitting frames
-      pause(2.0);
+      %pause(2.0);
     for k=i:n
       %fprintf('Frame %d Transmitted\n',a(k));
       windowframes = windowframes+1;

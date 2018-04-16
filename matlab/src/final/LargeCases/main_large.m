@@ -45,7 +45,7 @@ p = 1 - threshold/100;
 j = 2 * w;
 oldef = efficiency(p,j);
 
-pause(1);
+%pause(1);
 %Starting protocol
 while flag==0
   if flag2==0
@@ -56,7 +56,7 @@ while flag==0
       windowframes = windowframes+1;
       pt=pt+1;
     end
-    pause(2.0);
+    %pause(2.0);
     %Signalling the end of the window
     flag2=1;
   end
@@ -67,7 +67,7 @@ while flag==0
   noiseHist = [noiseHist noise];
   count = count + 1;
   %Event of frame acknowledged
-  pause(2.0);
+  %pause(2.0);
   if noise>threshold
     %fprintf('Ackowledgement of Frame %d Received\n',a(pt-w));
     sentframes = sentframes+1;
@@ -97,7 +97,7 @@ while flag==0
         %fprintf('Corrupted Frame %d Received\n',a(pt-w));
       else
         %Timeout time
-        pause(1.0);
+        %pause(1.0);
         %fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
       end
 
@@ -125,7 +125,7 @@ while (i<=n)
   count = count + 1;
   %Acknowledgement of frames
 
-  pause(2.0);
+  %pause(2.0);
   if noise>threshold
     %fprintf('Acknowledgement of Frame %d Received\n',a(i));
     sentframes = sentframes+1;
@@ -142,7 +142,7 @@ while (i<=n)
       %fprintf('Corrupted Frame %d Received\n',a(i));
     else
       % Timeout
-      pause(1.0);
+      %pause(1.0);
       %fprintf('No Acknowledgement of Frame %d Received\n',a(i));
     end
 
@@ -155,7 +155,7 @@ while (i<=n)
       unsentframes=unsentframes+1;
     end
     %Retransmitting frames
-    pause(2.0);
+    %pause(2.0);
       for k=i:n
         %fprintf('Frame %d Transmitted\n',a(k));
         windowframes = windowframes+1;
