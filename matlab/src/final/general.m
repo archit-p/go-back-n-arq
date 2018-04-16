@@ -46,7 +46,6 @@ while flag==0
     for i=1:w
 
       fprintf('Frame %d Transmitted\n',a(pt));
-      strcat('Frame ',num2str(a(pt)) ,' Transmitted');
       unsentframes = unsentframes-1;
       windowframes = windowframes+1;
       pt=pt+1;
@@ -65,16 +64,13 @@ while flag==0
   pause(2.0);
   if noise>threshold
     fprintf('Ackowledgement of Frame %d Received\n',a(pt-w));
-    strcat('Acknowledgement of Frame ',num2str(a(pt-w)) ,' Received');
     sentframes = sentframes+1;
 
     %Checking corner case
     if pt==n+1
       fprintf('Frame %d Transmitted\n',a(pt-1));
-      strcat('Frame ',num2str(a(pt-1)) ,' Transmitted');
     else
       fprintf('Frame %d Transmitted\n',a(pt));
-      strcat('Frame ',num2str(a(pt)) ,' Transmitted');
     end
 
     windowframes = windowframes+1;
@@ -93,18 +89,15 @@ while flag==0
     %If corrupted frame received
     if err > 5
       fprintf('Corrupted Frame %d Received\n',a(pt-w));
-      strcat('Corrupted Frame ',num2str(a(pt-w)) ,' Received');
     else
       pause(1.0);
       fprintf('No Acknowledgement of Frame %d Received\n',a(pt-w));
-      strcat('No Acknowledgement of Frame ',num2str(a(pt-w)) ,' Received');
     end
 
 
     %Discarding waiting frames
     for j=w-1:-1:1
       fprintf('Frame %d Discarded\n',a(pt-w+j));
-      strcat('Frame ',num2str(a(pt-w+j)) ,' Discarded');
       windowframes=windowframes-1;
       unsentframes=unsentframes+1;
 
@@ -130,7 +123,6 @@ while (i<=n)
   %Acknowledgement of frames
   if noise>threshold
     fprintf('Acknowledgement of Frame %d Received\n',a(i));
-    strcat('Acknowledgement of Frame ',num2str(a(i)) ,' Received');
     sentframes = sentframes+1;
 
     i=i+1;
@@ -143,17 +135,14 @@ while (i<=n)
     %If corrupted frame received
     if err > 5
       fprintf('Corrupted Frame %d Received\n',a(i));
-      strcat('Corrupted Frame ',num2str(a(i)) ,' Received');
     else
       pause(1.0);
       fprintf('No Acknowledgement of Frame %d Received\n',a(i));
-      strcat('No Acknowledgement of Frame ',num2str(a(i)) ,' Received');
     end
 
 
     for j=n:-1:i+1
       fprintf('Frame %d Discarded\n',a(j));
-      strcat('Frame ',num2str(a(j)) ,' Discarded');
       windowframes=windowframes-1;
       unsentframes=unsentframes+1;
 
@@ -165,7 +154,6 @@ while (i<=n)
       pause(2.0);
     for k=i:n
       fprintf('Frame %d Transmitted\n',a(k));
-      strcat('Frame ',num2str(a(k)) ,' Transmitted');
       windowframes = windowframes+1;
       unsentframes = unsentframes-1;
 
