@@ -15,6 +15,9 @@ function result = markov(threshold, noiseHist)
     prevNoise = prevNoise - 1;
   end
 
+  if(count >= 20)
+    count = 5;
+
   % predict a value
   pred = randi([lower, upper], 1);
 
