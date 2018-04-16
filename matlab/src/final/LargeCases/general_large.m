@@ -1,10 +1,12 @@
+function value = general_large(w,n)
+
 %Clear the Screens
-clc;
-clear all;
+
+
 
 %Input the required details
-n=input('Number Of Frames: ');
-w=input('Window Size: ');
+%n=input('Number Of Frames: ');
+%w=input('Window Size: ');
 
 
 %To ensure no errors
@@ -25,7 +27,7 @@ a=1:n;
 
 threshold = 28;
 dropcount = 0;
-fprintf('According to conventional formula\nThroughput efficiency is\n');
+%fprintf('According to conventional formula\nThroughput efficiency is\n');
 
 %Probability of packet being transmitted
 p = 1 - threshold/100;
@@ -162,12 +164,12 @@ while (i<=n)
   end
 end
 
-fprintf('Calculated efficiency')
+%fprintf('Calculated efficiency')
 p = 1- (dropcount/(n+dropcount));
 
 j = 2 * w;
 newef = efficiency(p,j);
 
-fprintf('Percentage difference is\n');
+%fprintf('Percentage difference is\n');
 
-abs((newef-oldef)* 100/oldef)
+value = abs((newef-oldef)* 100/oldef);

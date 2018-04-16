@@ -1,10 +1,12 @@
+function value = main_large(w,n)
+
 %Clear the Screens
-clc;
-clear all;
+
+
 
 %Input the required details
-n=input('Number Of Frames: ');
-w=input('Window Size: ');
+%n=input('Number Of Frames: ');
+%w=input('Window Size: ');
 
 
 %To ensure no errors
@@ -13,7 +15,7 @@ while w>=n
 end
 
 
-fprintf('According to conventional formula\nThroughput efficiency is\n');
+%fprintf('According to conventional formula\nThroughput efficiency is\n');
 
 
 %Setting various variables
@@ -164,15 +166,15 @@ while (i<=n)
   end
 end
 
-dropcount
+dropcount;
 
-fprintf('Using Markov Transmission error conditions the efficiency is found to be\n');
+%fprintf('Using Markov Transmission error conditions the efficiency is found to be\n');
 
 p = 1- (dropcount/(n+dropcount));
 
 j = 2 * w;
 newef = efficiency(p,j);
 
-fprintf('Percentage difference is\n');
+%fprintf('Percentage difference is\n');
 
-abs((newef-oldef)* 100/oldef)
+value = abs((newef-oldef)* 100/oldef);
